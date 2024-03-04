@@ -10,27 +10,40 @@ def main():
                 string=input_gather()
             elif answer=="2":
                 reverse=str_reverse(string)
-                print(reverse)
+                print()
+                if reverse==string:
+                    print(f"{reverse}, The string backwards is the same")
+                else:
+                    print(f"reverse: {reverse}")
+                print()
             elif answer=="3":
                 vowel=char_counter(string)
                 vowel=vowel[0]
-                print(vowel)
+                print()
+                print(f"vowel: {vowel}")
+                print()
             elif answer=="4":
-                newstring=char_replace(string)
-                print(newstring)
+                string=char_replace(string)
+                print()
+                print(f"new string is {string}")
+                print()
             elif answer=="5":
                 list1=string_analysis(string)
                 palindrome=list1[0]
                 letters=list1[1]
                 vowel=list1[2]
                 consonants=list1[3]
+                print()
                 print(f"Palindrome: {palindrome}\nAmount of letters: {letters}\nAmount of vowels: {vowel}\nAmount of consonants: {consonants}")
+                print()
             elif answer=="6":
                 go=False
 def menu():
-    answer=input("What would you like to do?\n1)Input a string \n2)reverse the string\n3)Count vowels\n4)replace characters\n5)Analyze the string\n6)Exit")
+    print()
+    answer=input("What would you like to do?\n1)Input a string \n2)Reverse the string\n3)Count vowels\n4)Replace characters\n5)Analyze the string\n6)Exit\n")
     while answer.isdigit()!=True or int(answer)>6 or int(answer)<1:
-        answer=input("What would you like to do?\n1)Input a string \n2)reverse the string\n3)Count vowels\n4)replace characters\n5)Analyze the string\n6)Exit")
+        answer=input("What would you like to do?\n1)Input a string \n2)Reverse the string\n3)Count vowels\n4)Replace characters\n5)Analyze the string\n6)Exit\n")
+    print()
     return answer
 def char_replace(string):
     go=True
@@ -44,10 +57,10 @@ def char_replace(string):
             go=False
     return newstring
 def input_gather():
-    string = input("Please enter a string: ")
+    string = input("Please enter a string(5 letters and only letters): ")
     
-    while len(string) < 5:
-        string = input("Please enter a string (at least 5 characters): ")
+    while len(string) < 5 or string.isalpha()==False:
+        string = input("Please enter a string valid string: ")
         
     return string
 
